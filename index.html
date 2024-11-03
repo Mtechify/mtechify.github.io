@@ -1,18 +1,57 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>杜承航在线出丑</title>
-    <style>  
-      body {
-        margin: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div>
-      <image src='picture.png' alt="picture" width="800px" height="3000px">
-    </div>
-  </body>
+<html>
+<head>
+  <title>期中考试倒计时</title>
+  <style>
+    body {
+      background-color: #0000FF;
+      transition: background-color 1s;
+      text-align: center;
+    }
+
+    h1 {
+      colour:white;
+      font-size: 5em;
+      margin-top: 0;
+    }
+
+    #countdown {
+      color: white;
+      font-size: 5em;
+      margin-top: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>期中考试倒计时</h1>
+  <div id="countdown"></div>
+
+  <script>
+    // 目标日期和时间
+    var targetDate = new Date("November 5, 2024 00:00:00");
+
+    // 更新倒计时
+    function updateCountdown() {
+      // 计算剩余时间
+      var now = new Date();
+      var distance = targetDate - now;
+
+      // 转换剩余时间为秒
+      var seconds = Math.floor(distance / 1000);
+
+      // 更新倒计时显示
+      document.getElementById("countdown").innerHTML = seconds + " 秒";
+
+      // 根据剩余时间改变背景颜色
+      var colorValue = Math.floor(255 - (seconds / 60) * 255);
+      document.body.style.backgroundColor = "#" + colorValue.toString(16) + colorValue.toString(16) + "FF";
+
+      // 每秒更新倒计时
+      setTimeout(updateCountdown, 1000);
+    }
+
+    // 启动倒计时
+    updateCountdown();
+  </script>
+</body>
 </html>
